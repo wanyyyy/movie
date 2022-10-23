@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useEffect, useState } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import './card.css'
@@ -5,17 +7,17 @@ import { Link } from "react-router-dom";
 
 const Cards = ({movie}) => {
 
-    const [isLoding, setIsLoding] = useState(true)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         setTimeout(() => {
-            setIsLoding(false)
+            setIsLoading(false)
         }, 1500)
     }, [])
 
     return <>
     {
-        isLoding
+        isLoading
         ?
         <div className="cards">
             <SkeletonTheme color="#202020" highlightColor="#444">
@@ -23,7 +25,7 @@ const Cards = ({movie}) => {
             </SkeletonTheme>
         </div>
         :
-        <Link to={`movie/${movie.id}`} style={{textDecoration:"none", color:"white"}}>
+        <Link to={`/movie/${movie.id}`} style={{textDecoration:"none", color:"white"}}>
             <div className="cards">
                 <img className="cards__img" src={`https://image.tmdb.org/t/p/original${movie?movie.poster_path : ""}`} />
                 <div className="cards__overlay">
